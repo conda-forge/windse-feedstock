@@ -1,6 +1,6 @@
 {% set name = "windse" %}
-{% set branch = "driver" %}
-{% set version = "0.5" %}
+{% set branch = "master" %}
+{% set version = "0.8" %}
 {% set fenics_version = "2018.1.0" %}
 
 package:
@@ -10,14 +10,14 @@ package:
 source:
 
   url: https://github.com/NREL/WindSE/raw/{{ branch }}/archives/{{ name }}-{{ fenics_version }}_{{ version }}.tar.gz
-  sha256: 0811c220059867c7d35af6366631005f91c6553c39baa54794a70c9bf59b7665
+  sha256: 866322c2c1ab655c3e1436ce18e534b73b3436a30e1f6b2e5d4666c5a19de7f7
 
 build:
   number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
-    - windse_driver = windse.windse_driver:main
+    - windse = windse_driver.driver:main
 
 requirements:
   host:
@@ -38,7 +38,7 @@ test:
     - dolfin_adjoint
     - windse
   commands:
-    - windse_driver run --help
+    - windse run --help
 
 about:
   home: https://github.com/NREL/WindSE
