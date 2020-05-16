@@ -13,7 +13,7 @@ source:
   sha256: 866322c2c1ab655c3e1436ce18e534b73b3436a30e1f6b2e5d4666c5a19de7f7
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
@@ -29,7 +29,7 @@ requirements:
     - dolfin-adjoint {{ fenics_version }}.*
     - scipy
     - mshr 
-    - matplotlib
+    - matplotlib-base
     - pyyaml
 
 test:
